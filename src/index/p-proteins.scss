@@ -1,0 +1,15 @@
+.circuitboard > svg.d3 {
+	.example.vertex > .core {
+		pointer-events: visiblePainted;
+		fill: lighten(purple, 20);
+		stroke: purple;
+	}
+
+	.example.edge {
+		pointer-events: visiblePainted;
+		cursor: pointer;
+		stroke: purple;
+		stroke-width: 2px;
+		stroke-linecap: round;
+	}
+}

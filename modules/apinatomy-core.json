@@ -1,0 +1,9 @@
+{
+  "type": "external-library",
+  "name": "apinatomy-core",
+  "dir": "apinatomy-core/dist",
+  "file": "circuitboard.js"
+  
+      , "var": ""
+  
+}

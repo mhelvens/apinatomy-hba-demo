@@ -1,0 +1,9 @@
+{
+  "type": "external-library",
+  "name": "chroma-js",
+  "dir": "chroma-js",
+  "file": "chroma.js"
+  
+      , "var": "Chroma"
+  
+}

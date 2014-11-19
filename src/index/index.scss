@@ -1,0 +1,96 @@
+
+
+///////////////////////// Variables /////////////////////////
+
+$amy-tile-header-height: 26px;
+$amy-tile-border-width: 1px;
+$amy-tile-status-icon-size: 10px;
+
+///////////////////////// Rules /////////////////////////////
+
+html, body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: absolute;
+	overflow: hidden;
+}
+
+#circuitboard {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	bottom: 20px;
+	z-index: 1;
+}
+
+#three-d-canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	z-index: 0;
+}
+
+.tile {
+	user-select: none;
+	cursor: pointer;
+	text-align: center;
+	overflow: hidden;
+	border: solid $amy-tile-border-width;
+}
+
+////////// The Header //////////
+
+.tile > header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	border-width: 1px;
+}
+
+.tile.open > header {
+	height: $amy-tile-header-height;
+	border-style: none none solid none;
+	line-height: $amy-tile-header-height;
+	font-size: .8 * $amy-tile-header-height;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.tile:not(.open) > header {
+	border-style: none;
+}
+
+.tile:not(.active) {
+	border-style: dotted !important;
+}
+
+////////// The Content Section //////////
+
+.tile > section {
+	user-select: text;
+}
+
+.tile:not(.open) > section {
+	display: none;
+}
+
+////////// Hiding the header for tiles that are open & maximized //////////
+
+.tile.hidden-header {
+	& > header {
+		display: none !important;
+	}
+}
+

@@ -1,0 +1,9 @@
+{
+  "type": "external-library",
+  "name": "bluebird",
+  "dir": "bluebird/js/browser",
+  "file": "bluebird.js"
+  
+      , "var": "P"
+  
+}

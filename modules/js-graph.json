@@ -1,0 +1,9 @@
+{
+  "type": "external-library",
+  "name": "js-graph",
+  "dir": "js-graph/dist",
+  "file": "js-graph.js"
+  
+      , "var": "JsGraph"
+  
+}

@@ -1,0 +1,23 @@
+{
+  "name": "apinatomy-hpa-demo",
+  "version": "0.1.0",
+  "description": "no description",
+  "authors": [
+    {
+      "name": "Michiel Helvensteijn",
+      "email": "mhelvens@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "~2.3.11",
+    "jquery": "~2.1.1",
+    "apinatomy-core": "~0.13.1",
+    "d3": "~3.4.13",
+    "js-graph": "~0.4.0",
+    "chroma-js": "~0.6.1"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.1"
+  }
+}
