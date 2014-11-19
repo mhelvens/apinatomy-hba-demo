@@ -97,9 +97,9 @@ define([
 
 					// Creating the kebab
 					var kebab = new THREE.Object3D();
-					kebab.rotation.x = THREE.Math.degToRad(-90);
-					kebab.scale.y = 0.15;
 					this.circuitboard.object3D.add(kebab);
+					kebab.rotation.x = THREE.Math.degToRad(-90);
+					kebab.scale.y = -0.2;
 					this.oneValue('visible', false, () => {
 						this.circuitboard.object3D.remove(kebab);
 					});
