@@ -7,8 +7,6 @@ require([
 	'jquery',
 	'bluebird',
 
-	'apinatomy/fma-model',
-
 	/* plugins */
 	'apinatomy/p-core',
 	'apinatomy/p-tile-skin',
@@ -31,7 +29,7 @@ require([
 	//'apinatomy/p-three-d-geometric-models-stl',
 	'apinatomy/p-d3-three-d',
 	'./p-proteins.js'
-], function ($, P, getFmaModels) {
+], function ($, P) {
 	'use strict';
 
 
@@ -48,6 +46,10 @@ require([
 		//'three-d-geometric-models-stl',
 		//'vascularization'
 	]);
+
+
+	/* need to load this after plugin-selection */
+	var getFmaModels = require('apinatomy/fma-model');
 
 
 	/* instantiate the circuit-board */

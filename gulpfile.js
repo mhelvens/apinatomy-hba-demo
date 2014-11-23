@@ -84,10 +84,14 @@ INTERNAL_LIBRARIES.concat(APPLICATIONS).forEach(function (m) {
 				{ test: /\.scss$/, loader: "style!css!autoprefixer!sass" },
 				{ test: /\.css$/, loader: "style!css!autoprefixer" },
 				{ test: /\.js/, loader: "traceur?script" },
-				{ test: /\.png/, loader: "file" },
+				{ test: /\.png/, loader: "file" },,
+				{ test: /\.jpg/, loader: "file" },
 				{ test: /\.json/, loader: "json" }
 			]
-		}
+		},
+		plugins: [
+			new webpack.optimize.DedupePlugin()
+		]
 	};
 
 	/* the webpack task for the internal module */
@@ -156,17 +160,17 @@ gulp.task('build',
 		return 'build:'+mod.name
 	}));
 
-/* test task */
-gulp.task('test', ['build'], function () {
-	return gulp.src(EXTERNAL_LIBRARIES.map(function (lib) {
-		return lib.dir + '/' + lib.file;
-	}).concat([
-		'dist/**/*.js',
-		'!dist/**/*.min.js',
-		'',
-		'test/**/*.js'
-	])).pipe(karma({ configFile: 'karma.conf.js' }));
-});
+///* test task */
+//gulp.task('test', ['build'], function () {
+//	return gulp.src(EXTERNAL_LIBRARIES.map(function (lib) {
+//		return lib.dir + '/' + lib.file;
+//	}).concat([
+//		'dist/**/*.js',
+//		'!dist/**/*.min.js',
+//		'',
+//		'test/**/*.js'
+//	])).pipe(karma({ configFile: 'karma.conf.js' }));
+//});
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +182,7 @@ gulp.task('watch', function () {
 		'src/**/*.scss',
 		'src/**/*.css',
 		'src/**/*.html'
-	], ['lint', 'build', 'test']);
+	], ['lint', 'build']); // 'test'
 });
 
 
