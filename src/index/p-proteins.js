@@ -22,7 +22,7 @@ define([
 	});
 
 
-	/////////////////////////////////////////////////
+	////////// utility functions ///////////////////////////////////////
 
 	var colorRange = new ColorRange();
 	var colorMap = {};
@@ -64,15 +64,36 @@ define([
 		return kebab;
 	}
 
-	/////////////////////////////////////////////////
+	function idPrefix(id) {
+		return id.substr(0, id.indexOf(':'));
+	}
+
+	function withoutIdPrefix(id) {
+		return id.substr(id.indexOf(':') + 1);
+	}
+
+	////////////////////////////////////////////////////////////////////
 
 
+	/* add proteins and kebabs  */
 	plugin.insert('Tile.prototype.construct', function () {
 
 
-		if (!this.model) { return }
+		/* only interested in fma tiles with a model */
+		if (!this.model || this.model.type !== 'fma') { return }
 
 
+		/* gather proteins to show kebabs for */
+		var ensps = {};
+		( fmaToEnsg[this.model.id] || [] ).forEach((ensg) => {
+			if (ensgToEnsp[ensg]) { ensps[ensgToEnsp[ensg][0]] = true } // show only one protein per gene
+		});
+
+		/* stop now if there are no proteins to show */
+		if (Object.keys(ensps).length === 0) { return }
+
+
+		/* the graph group for this tile */
 		var graphGroup = new D3Group({
 			parent: this,
 			gravityFactor: 1,
@@ -93,12 +114,6 @@ define([
 		});
 
 
-		var ensps = {};
-		( fmaToEnsg[this.model.id] || [] ).forEach((ensg) => {
-			( ensgToEnsp[ensg] || [] ).forEach((ensp) => {
-				ensps[ensp] = true;
-			});
-		});
 		Object.keys(ensps).forEach((ensp) => {
 			this.observeValue('visible', true, () => {
 
@@ -157,23 +172,25 @@ define([
 
 
 	plugin.replaceAround('FmaModel.prototype.getChildIds', (original) => function () {
-		var result = original.call(this);
+		var result = [];
+		var enspsWeAlreadyHave = {};
 		( fmaToEnsg[this.id] || [] ).forEach((ensg) => {
-			//( ensgToEnsp[ensg] || [] ).forEach((ensp) => {
-			//	result.push(ensp);
-			//	U.object(this, '_enspToEnsg')[ensp] = ensg; // choosing only one ENSG per ENSP
-			//});
+			if (enspsWeAlreadyHave[ensgToEnsp[ensg]]) { return }
+			enspsWeAlreadyHave[ensgToEnsp[ensg]] = true;
 			result.push(ensg);
 		});
+		if (result.length === 0) { // only show normal (partonomy/subclass) children if there are no gene children
+			result = original.call(this);
+		}
 		return result;
 	});
 
 
 	plugin.replaceAround('FmaModel.prototype.getModels', (original) => function (ids) {
-		var fmaIds = ids.filter((id) => id.substring(0, 4) === 'fma:' || id.substring(0, 7) === '24tile:');
+		var fmaIds = ids.filter((id) => idPrefix(id) === 'fma' || idPrefix(id) === '24tile');
 		var result = original.call(this, fmaIds);
 
-		var geneIds = ids.filter((id) => id.substring(0, 5) === 'gene:');
+		var geneIds = ids.filter((id) => idPrefix(id) === 'gene');
 		var proteinModels = geneIds.map((id) => {
 			var promise = P.resolve(new GeneModel({
 				_id: id,
@@ -197,25 +214,20 @@ define([
 	});
 
 
-	/* give gene tiles a pretty picture */
+	/* give gene tiles a pretty picture and tooltip text */
 	plugin.append('Tile.prototype.construct', function () {
 		if (this.model && this.model.type === 'gene') {
 
 			P.all([this.model, this.parent.model]).then(([ensgModel, fmaModel]) => {
 
-				if (ensgToFmaToImageUrl[ensgModel.id] && ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]) {
+				var imageUrl = ensgToFmaToImageUrl[ensgModel.id] && ensgToFmaToImageUrl[ensgModel.id][fmaModel.id];
 
-					console.log(ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]);
-
-					this.element.children('header').css({
-						backgroundImage: `url(${ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]})`,
-						backgroundSize: 'cover'
-					});
-				} else {
-					this.element.children('header').css({
-						backgroundColor: 'red'
-					});
-				}
+				this.element.children('header').css(imageUrl ? {
+					backgroundImage: `url(${imageUrl})`,
+					backgroundSize: 'cover'
+				} : {
+					backgroundColor: 'red'
+				}).attr('title', withoutIdPrefix(ensgModel.id));
 
 			});
 
@@ -225,141 +237,29 @@ define([
 
 	/* give gene tiles their very own kebab */
 	plugin.append('Tile.prototype.construct', function () {
-		if (this.model && this.model.type === 'gene') {
+		if (this.model && this.model.type === 'gene' && ensgToEnsp[this.model.id]) {
 
+			var ensp = ensgToEnsp[this.model.id][0]; // show only one protein per gene
 
-			var graphGroup = new D3Group({
-				parent: this,
-				gravityFactor: 1.2,
-				chargeFactor: 1
-			});
-			((setGraphGroupRegion) => {
-				setGraphGroupRegion();
-				this.on('size', setGraphGroupRegion);
-				this.on('position', setGraphGroupRegion);
-			})(() => {
-				var AREA_MARGIN = 5;
-				graphGroup.setRegion({
-					top: this.position.top + AREA_MARGIN,
-					left: this.position.left + AREA_MARGIN,
-					height: this.size.height - 2 * AREA_MARGIN,
-					width: this.size.width - 2 * AREA_MARGIN
+			this.observeValue('visible', true, () => {
+
+				/* create the domain visualization (kebab) */
+				var kebab = createKebab(ensp);
+				this.object3D.add(kebab);
+				kebab.scale.y = 0.2;
+				kebab.rotation.x = THREE.Math.degToRad(90);
+				this.oneValue('visible', false)(() => {
+					this.object3D.remove(kebab);
 				});
-			});
-
-
-			var ensps = {};
-			( ensgToEnsp[this.model.id] || [] ).forEach((ensp) => {
-				ensps[ensp] = true;
-			});
-			Object.keys(ensps).forEach((ensp) => {
-				this.observeValue('visible', true, () => {
-
-					/* create the vertex */
-					var protein = new D3Vertex({
-						id: `${this.model.id}:${ensp}`,
-						parent: graphGroup,
-						cssClass: 'protein'
-					});
-					graphGroup.addVertex(protein);
-					this.oneValue('visible', false)(() => {
-						protein.destroy();
-						protein = undefined;
-						graphGroup.removeVertex(protein);
-					});
-					this.observe('open', (open) => {
-						protein.visible = !open;
-					});
-
-
-					/* create the domain visualization (kebab) */
-					var kebab = createKebab(ensp);
-					this.circuitboard.object3D.add(kebab);
-					kebab.scale.y = -0.2; // negative because of the y axis flip of the circuitboard object
-					this.oneValue('visible', false)(() => {
-						this.circuitboard.object3D.remove(kebab);
-					});
-					this.observe('open', (open) => {
-						kebab.visible = !open;
-					});
-
-					/* synchronize the kebab with the protein */
-					protein.observe('x', (x) => { kebab.position.x = x }).unsubscribeOn(this.oneValue('visible', false));
-					protein.observe('y', (y) => { kebab.position.y = y }).unsubscribeOn(this.oneValue('visible', false));
-
-
+				this.observe('open', (open) => {
+					kebab.visible = !open;
 				});
+
+
 			});
 
-
-
-
-
-
-
-
-
-			//this.observeValue('visible', true, () => {
-			//
-			//
-			//	//var kebab = createKebab(this.model.id);
-			//	//kebab.scale.y = 0.2;
-			//	//kebab.rotation.x = THREE.Math.degToRad(90);
-			//	//this.object3D.add(kebab);
-			//	//this.oneValue('visible', false)(() => {
-			//	//	this.object3D.remove(kebab);
-			//	//});
-			//	//this.observe('open', (open) => {
-			//	//	kebab.visible = !open;
-			//	//});
-			//
-			//
-			//
-			//
-			//
-			//	/* create the vertex */
-			//	var protein = new D3Vertex({
-			//		id: `${this.model.id}:${ensp}`,
-			//		parent: graphGroup,
-			//		cssClass: 'protein'
-			//	});
-			//	graphGroup.addVertex(protein);
-			//	this.oneValue('visible', false)(() => {
-			//		protein.destroy();
-			//		protein = undefined;
-			//		graphGroup.removeVertex(protein);
-			//	});
-			//	this.observe('open', (open) => {
-			//		protein.visible = !open;
-			//	});
-			//
-			//
-			//	/* create the domain visualization (kebab) */
-			//	var kebab = createKebab(ensp);
-			//	this.circuitboard.object3D.add(kebab);
-			//	kebab.scale.y = -0.2; // negative because of the y axis flip of the circuitboard object
-			//	this.oneValue('visible', false)(() => {
-			//		this.circuitboard.object3D.remove(kebab);
-			//	});
-			//	this.observe('open', (open) => {
-			//		kebab.visible = !open;
-			//	});
-			//
-			//	/* synchronize the kebab with the protein */
-			//	protein.observe('x', (x) => { kebab.position.x = x }).unsubscribeOn(this.oneValue('visible', false));
-			//	protein.observe('y', (y) => { kebab.position.y = y }).unsubscribeOn(this.oneValue('visible', false));
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//});
 		}
 	});
-
-
 
 
 });
