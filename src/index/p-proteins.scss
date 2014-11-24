@@ -1,11 +1,11 @@
 .circuitboard > svg.d3 {
-	.example.vertex > .core {
+	.protein.vertex > .core {
 		pointer-events: visiblePainted;
 		fill: lighten(purple, 20);
 		stroke: purple;
 	}
 
-	.example.edge {
+	.protein.edge {
 		pointer-events: visiblePainted;
 		cursor: pointer;
 		stroke: purple;

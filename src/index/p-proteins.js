@@ -8,10 +8,11 @@ define([
 	'./fma-to-ensg.json',
 	'./ensg-to-ensp.json',
 	'./ensp-to-domains.json',
+	'./ensg-to-fma-to-imageurl.json',
 	'./util/ColorRange.js',
 	'chroma-js',
 	'./p-proteins.scss'
-], function ($, P, U, THREE, D3Group, D3Vertex, fmaToEnsg, ensgToEnsp, enspToDomains, ColorRange, Chroma) {
+], function ($, P, U, THREE, D3Group, D3Vertex, fmaToEnsg, ensgToEnsp, enspToDomains, ensgToFmaToImageUrl, ColorRange, Chroma) {
 	'use strict';
 
 
@@ -75,7 +76,7 @@ define([
 		var graphGroup = new D3Group({
 			parent: this,
 			gravityFactor: 1,
-			chargeFactor: 2.5
+			chargeFactor: 2
 		});
 		((setGraphGroupRegion) => {
 			setGraphGroupRegion();
@@ -103,9 +104,9 @@ define([
 
 				/* create the vertex */
 				var protein = new D3Vertex({
-					id: `${this.model.id}:protein:${ensp}`,
+					id: `${this.model.id}:${ensp}`,
 					parent: graphGroup,
-					cssClass: 'example'
+					cssClass: 'protein'
 				});
 				graphGroup.addVertex(protein);
 				this.oneValue('visible', false)(() => {
@@ -139,9 +140,18 @@ define([
 	});
 
 
+	var GeneModel = U.newClass(function (options) {
+		U.extend(this, options);
+	}, {
+		get id() { return this._id },
+		get type() { return 'gene' }
+	});
+
+
 	var ProteinModel = U.newClass(function (options) {
 		U.extend(this, options);
 	}, {
+		get id() { return this._id },
 		get type() { return 'protein' }
 	});
 
@@ -149,9 +159,11 @@ define([
 	plugin.replaceAround('FmaModel.prototype.getChildIds', (original) => function () {
 		var result = original.call(this);
 		( fmaToEnsg[this.id] || [] ).forEach((ensg) => {
-			( ensgToEnsp[ensg] || [] ).forEach((ensp) => {
-				result.push(`protein:${ensp}`);
-			});
+			//( ensgToEnsp[ensg] || [] ).forEach((ensp) => {
+			//	result.push(ensp);
+			//	U.object(this, '_enspToEnsg')[ensp] = ensg; // choosing only one ENSG per ENSP
+			//});
+			result.push(ensg);
 		});
 		return result;
 	});
@@ -161,14 +173,14 @@ define([
 		var fmaIds = ids.filter((id) => id.substring(0, 4) === 'fma:' || id.substring(0, 7) === '24tile:');
 		var result = original.call(this, fmaIds);
 
-		var proteinIds = ids.filter((id) => id.substring(0, 8) === 'protein:');
-		var proteinModels = proteinIds.map((id) => {
-			var promise = P.resolve(new ProteinModel({
+		var geneIds = ids.filter((id) => id.substring(0, 5) === 'gene:');
+		var proteinModels = geneIds.map((id) => {
+			var promise = P.resolve(new GeneModel({
 				_id: id,
-				name: '' // TODO: temporary, to not show the name in the tile
+				name: '' // TODO: temporary, to not show any name in the tile
 			}));
 			promise.id = id;
-			promise.type = 'protein';
+			promise.type = 'gene';
 			return promise;
 		});
 		[].push.apply(result, proteinModels);
@@ -177,39 +189,173 @@ define([
 	});
 
 
-	/* don't allow protein tiles to be opened */
+	/* don't allow gene tiles to be opened */
 	plugin.append('Tile.prototype.construct', function () {
-		if (this.model && this.model.type === 'protein') {
+		if (this.model && this.model.type === 'gene') {
 			this.observeValue('open', true, () => { this.open = false });
 		}
 	});
 
 
-	/* give protein tiles a pretty picture */
+	/* give gene tiles a pretty picture */
 	plugin.append('Tile.prototype.construct', function () {
-		if (this.model && this.model.type === 'protein') {
-			this.element.children('header').css({
-				backgroundImage: `url(${require('./img/2314_A_7_3_rna_selected.jpg')})`,
-				backgroundSize: 'cover'
+		if (this.model && this.model.type === 'gene') {
+
+			P.all([this.model, this.parent.model]).then(([ensgModel, fmaModel]) => {
+
+				if (ensgToFmaToImageUrl[ensgModel.id] && ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]) {
+
+					console.log(ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]);
+
+					this.element.children('header').css({
+						backgroundImage: `url(${ensgToFmaToImageUrl[ensgModel.id][fmaModel.id]})`,
+						backgroundSize: 'cover'
+					});
+				} else {
+					this.element.children('header').css({
+						backgroundColor: 'red'
+					});
+				}
+
 			});
+
+
 		}
 	});
 
-	/* give protein tiles their very own kebab */
+	/* give gene tiles their very own kebab */
 	plugin.append('Tile.prototype.construct', function () {
-		if (this.model && this.model.type === 'protein') {
-			this.observeValue('visible', true, () => {
-				var kebab = createKebab(this.model.id.substr(8));
-				kebab.scale.y = 0.2;
-				kebab.rotation.x = THREE.Math.degToRad(90);
-				this.object3D.add(kebab);
-				this.oneValue('visible', false)(() => {
-					this.object3D.remove(kebab);
-				});
-				this.observe('open', (open) => {
-					kebab.visible = !open;
+		if (this.model && this.model.type === 'gene') {
+
+
+			var graphGroup = new D3Group({
+				parent: this,
+				gravityFactor: 1.2,
+				chargeFactor: 1
+			});
+			((setGraphGroupRegion) => {
+				setGraphGroupRegion();
+				this.on('size', setGraphGroupRegion);
+				this.on('position', setGraphGroupRegion);
+			})(() => {
+				var AREA_MARGIN = 5;
+				graphGroup.setRegion({
+					top: this.position.top + AREA_MARGIN,
+					left: this.position.left + AREA_MARGIN,
+					height: this.size.height - 2 * AREA_MARGIN,
+					width: this.size.width - 2 * AREA_MARGIN
 				});
 			});
+
+
+			var ensps = {};
+			( ensgToEnsp[this.model.id] || [] ).forEach((ensp) => {
+				ensps[ensp] = true;
+			});
+			Object.keys(ensps).forEach((ensp) => {
+				this.observeValue('visible', true, () => {
+
+					/* create the vertex */
+					var protein = new D3Vertex({
+						id: `${this.model.id}:${ensp}`,
+						parent: graphGroup,
+						cssClass: 'protein'
+					});
+					graphGroup.addVertex(protein);
+					this.oneValue('visible', false)(() => {
+						protein.destroy();
+						protein = undefined;
+						graphGroup.removeVertex(protein);
+					});
+					this.observe('open', (open) => {
+						protein.visible = !open;
+					});
+
+
+					/* create the domain visualization (kebab) */
+					var kebab = createKebab(ensp);
+					this.circuitboard.object3D.add(kebab);
+					kebab.scale.y = -0.2; // negative because of the y axis flip of the circuitboard object
+					this.oneValue('visible', false)(() => {
+						this.circuitboard.object3D.remove(kebab);
+					});
+					this.observe('open', (open) => {
+						kebab.visible = !open;
+					});
+
+					/* synchronize the kebab with the protein */
+					protein.observe('x', (x) => { kebab.position.x = x }).unsubscribeOn(this.oneValue('visible', false));
+					protein.observe('y', (y) => { kebab.position.y = y }).unsubscribeOn(this.oneValue('visible', false));
+
+
+				});
+			});
+
+
+
+
+
+
+
+
+
+			//this.observeValue('visible', true, () => {
+			//
+			//
+			//	//var kebab = createKebab(this.model.id);
+			//	//kebab.scale.y = 0.2;
+			//	//kebab.rotation.x = THREE.Math.degToRad(90);
+			//	//this.object3D.add(kebab);
+			//	//this.oneValue('visible', false)(() => {
+			//	//	this.object3D.remove(kebab);
+			//	//});
+			//	//this.observe('open', (open) => {
+			//	//	kebab.visible = !open;
+			//	//});
+			//
+			//
+			//
+			//
+			//
+			//	/* create the vertex */
+			//	var protein = new D3Vertex({
+			//		id: `${this.model.id}:${ensp}`,
+			//		parent: graphGroup,
+			//		cssClass: 'protein'
+			//	});
+			//	graphGroup.addVertex(protein);
+			//	this.oneValue('visible', false)(() => {
+			//		protein.destroy();
+			//		protein = undefined;
+			//		graphGroup.removeVertex(protein);
+			//	});
+			//	this.observe('open', (open) => {
+			//		protein.visible = !open;
+			//	});
+			//
+			//
+			//	/* create the domain visualization (kebab) */
+			//	var kebab = createKebab(ensp);
+			//	this.circuitboard.object3D.add(kebab);
+			//	kebab.scale.y = -0.2; // negative because of the y axis flip of the circuitboard object
+			//	this.oneValue('visible', false)(() => {
+			//		this.circuitboard.object3D.remove(kebab);
+			//	});
+			//	this.observe('open', (open) => {
+			//		kebab.visible = !open;
+			//	});
+			//
+			//	/* synchronize the kebab with the protein */
+			//	protein.observe('x', (x) => { kebab.position.x = x }).unsubscribeOn(this.oneValue('visible', false));
+			//	protein.observe('y', (y) => { kebab.position.y = y }).unsubscribeOn(this.oneValue('visible', false));
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//});
 		}
 	});
 

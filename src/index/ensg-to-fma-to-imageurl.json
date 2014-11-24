@@ -1,0 +1,150 @@
+{
+	"gene:ENSG00000091513": {
+		"fma:7200": "http://www.proteinatlas.org/images/5692/20915_A_5_2_rna_selected.jpg",
+		"fma:7203": "http://www.proteinatlas.org/images/5692/20915_A_9_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/5692/20915_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/5692/20915_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/5692/20915_A_9_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/5692/21109_B_9_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/5692/20915_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000180210": {
+		"fma:7203": "http://www.proteinatlas.org/images/16780/37641_A_8_5_rna_selected.jpg",
+		"fma:7206": "http://www.proteinatlas.org/images/54698/133720_A_7_2_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/54698/133720_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/18650/43222_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/54698/133720_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/18650/43222_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/18650/43222_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000160181": {
+		"fma:7203": "http://www.proteinatlas.org/images/36705/125457_A_8_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/36705/125457_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/36705/125457_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/36705/125457_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/25834/59004_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/36705/125457_A_8_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000131187": {
+		"fma:7203": "http://www.proteinatlas.org/images/3825/11033_A_9_5_rna_selected.jpg",
+		"fma:7206": "http://www.proteinatlas.org/images/3825/11033_A_9_2_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/3825/11033_A_4_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/3825/11033_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/3825/11033_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/3825/11033_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/3825/11033_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000115380": {
+		"fma:7203": "http://www.proteinatlas.org/images/16368/35428_A_7_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/16368/35428_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/16368/35428_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/16368/35428_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/16368/35428_B_9_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/16368/35428_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000157404": {
+		"fma:7203": "http://www.proteinatlas.org/images/3288/8181_A_8_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/3288/8181_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/3288/8181_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/3288/8181_A_9_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/3288/8181_B_8_5_rna_selected.jpg",
+		"fma:9601": "http://www.proteinatlas.org/images/4471/13782_B_2_4_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/3288/8181_A_8_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000136244": {
+		"fma:7203": "http://www.proteinatlas.org/images/23406/54890_A_7_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/23406/54890_A_4_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/23406/54890_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/23406/54890_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/23406/54890_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/23406/54890_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000196218": {
+		"fma:7203": "http://www.proteinatlas.org/images/56416/140331_A_8_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/56416/140331_A_5_6_rna_selected.jpg",
+		"fma:14069": "http://www.proteinatlas.org/images/56416/140331_B_1_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/56416/140331_A_9_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/56416/140331_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/56416/140331_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/56416/140331_A_8_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000171560": {
+		"fma:7200": "http://www.proteinatlas.org/images/16776/141799_A_4_2_rna_selected.jpg",
+		"fma:7203": "http://www.proteinatlas.org/images/16776/141799_A_8_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/16776/141799_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/16776/141799_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/51370/141803_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/51370/141803_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/16776/141799_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000163518": {
+		"fma:67944": "http://www.proteinatlas.org/images/54030/123244_B_7_8_rna_selected.jpg",
+		"fma:7203": "http://www.proteinatlas.org/images/54030/123244_A_7_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/54030/123244_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/54030/123244_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/54030/123244_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/54030/123244_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/54030/123244_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000167768": {
+		"fma:7203": "http://www.proteinatlas.org/images/2153/5795_A_8_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/2153/5795_A_5_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/2153/5795_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/2153/5795_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/2153/5795_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/2153/5795_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000185245": {
+		"fma:7203": "http://www.proteinatlas.org/images/2496/6301_A_7_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/2496/6301_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/13316/30667_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/2496/6301_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/2496/6301_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/2496/6301_A_7_3_rna_selected.jpg",
+		"fma:9608": "http://www.proteinatlas.org/images/2496/6301_B_6_4_rna_selected.jpg"
+	},
+	"gene:ENSG00000142192": {
+		"fma:7200": "http://www.proteinatlas.org/images/157/2073_A_5_2_rna_selected.jpg",
+		"fma:7203": "http://www.proteinatlas.org/images/1462/4468_A_7_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/1462/4468_A_4_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/157/2073_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/157/2073_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/1462/4468_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/1462/4468_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000118137": {
+		"fma:7203": "http://www.proteinatlas.org/images/16778/39553_A_7_5_rna_selected.jpg",
+		"fma:7206": "http://www.proteinatlas.org/images/16778/39553_A_7_2_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/16778/39553_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/16778/39553_A_7_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/16778/39553_A_9_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/16778/39874_B_8_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/16778/39553_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000164867": {
+		"fma:7203": "http://www.proteinatlas.org/images/2168/5989_A_9_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/2168/5989_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/2168/5989_A_8_8_rna_selected.jpg",
+		"fma:7196": "http://www.proteinatlas.org/images/2168/5989_B_9_4_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/2168/5989_A_8_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/2168/5989_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/2168/5989_A_7_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000111077": {
+		"fma:7203": "http://www.proteinatlas.org/images/34659/68864_A_9_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/34659/68864_A_6_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/34659/68864_A_8_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/34659/68864_A_9_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/34659/68968_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/34659/68864_A_9_3_rna_selected.jpg"
+	},
+	"gene:ENSG00000107295": {
+		"fma:7203": "http://www.proteinatlas.org/images/26685/55113_A_9_5_rna_selected.jpg",
+		"fma:7210": "http://www.proteinatlas.org/images/26685/55113_A_6_6_rna_selected.jpg",
+		"fma:62493": "http://www.proteinatlas.org/images/26685/55113_B_7_6_rna_selected.jpg",
+		"fma:5034": "http://www.proteinatlas.org/images/26685/55113_A_9_8_rna_selected.jpg",
+		"fma:7197": "http://www.proteinatlas.org/images/26685/55113_A_7_4_rna_selected.jpg",
+		"fma:61830": "http://www.proteinatlas.org/images/26685/55113_B_7_5_rna_selected.jpg",
+		"fma:14543": "http://www.proteinatlas.org/images/26685/55113_A_9_3_rna_selected.jpg"
+	}
+}
