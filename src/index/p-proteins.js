@@ -124,30 +124,30 @@ define([
 					cssClass: 'protein'
 				});
 				graphGroup.addVertex(protein);
-				this.oneValue('visible', false)(() => {
+				this.oneValue('visible', false, () => {
 					protein.destroy();
 					protein = undefined;
 					graphGroup.removeVertex(protein);
 				});
-				this.observe('open', (open) => {
+				this.oneValue('visible', false, this.observe('open', (open) => {
 					protein.visible = !open;
-				});
+				}));
 
 
 				/* create the domain visualization (kebab) */
 				var kebab = createKebab(ensp);
 				this.circuitboard.object3D.add(kebab);
 				kebab.scale.y = -0.2; // negative because of the y axis flip of the circuitboard object
-				this.oneValue('visible', false)(() => {
+				this.oneValue('visible', false, () => {
 					this.circuitboard.object3D.remove(kebab);
 				});
-				this.observe('open', (open) => {
+				this.oneValue('visible', false, this.observe('open', (open) => {
 					kebab.visible = !open;
-				});
+				}));
 
 				/* synchronize the kebab with the protein */
-				protein.observe('x', (x) => { kebab.position.x = x }).unsubscribeOn(this.oneValue('visible', false));
-				protein.observe('y', (y) => { kebab.position.y = y }).unsubscribeOn(this.oneValue('visible', false));
+				this.oneValue('visible', false, protein.observe('x', (x) => { kebab.position.x = x }));
+				this.oneValue('visible', false, protein.observe('y', (y) => { kebab.position.y = y }));
 
 
 			});
@@ -248,12 +248,12 @@ define([
 				this.object3D.add(kebab);
 				kebab.scale.y = 0.2;
 				kebab.rotation.x = THREE.Math.degToRad(90);
-				this.oneValue('visible', false)(() => {
+				this.oneValue('visible', false, () => {
 					this.object3D.remove(kebab);
 				});
-				this.observe('open', (open) => {
+				this.oneValue('visible', false, this.observe('open', (open) => {
 					kebab.visible = !open;
-				});
+				}));
 
 
 			});
