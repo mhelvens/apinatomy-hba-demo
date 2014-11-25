@@ -84,7 +84,7 @@ INTERNAL_LIBRARIES.concat(APPLICATIONS).forEach(function (m) {
 				{ test: /\.scss$/, loader: "style!css!autoprefixer!sass" },
 				{ test: /\.css$/, loader: "style!css!autoprefixer" },
 				{ test: /\.js/, loader: "traceur?script" },
-				{ test: /\.png/, loader: "file" },,
+				{ test: /\.png/, loader: "file" },
 				{ test: /\.jpg/, loader: "file" },
 				{ test: /\.json/, loader: "json" }
 			]
