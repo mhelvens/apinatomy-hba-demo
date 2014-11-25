@@ -40,18 +40,18 @@ define([
 	}
 
 	function createKebab(ensp) {
-		// Creating the kebab
+		/* creating the kebab */
 		var kebab = new THREE.Object3D();
 		kebab.rotation.x = THREE.Math.degToRad(-90);
 
-		// Creating the stick
+		/* creating the stick */
 		var stickMaterial = new THREE.MeshLambertMaterial({ color: 0xaaaaaa });
 		var stickGeometry = new THREE.CylinderGeometry(1, 1, enspToDomains[ensp].length, 32);
 		var kebabStick = new THREE.Mesh(stickGeometry, stickMaterial);
 		kebabStick.translateY(enspToDomains[ensp].length / 2);
 		kebab.add(kebabStick);
 
-		// Populating the kebab
+		/* populating the kebab */
 		enspToDomains[ensp].domains.forEach((domain) => {
 			var domainGeometry = new THREE.CylinderGeometry(3, 3, 1, 32);
 			var domainMaterial = new THREE.MeshLambertMaterial({ color: domainColor(domain).hex() });
@@ -68,7 +68,7 @@ define([
 		return id.substr(0, id.indexOf(':'));
 	}
 
-	function withoutIdPrefix(id) {
+	function idWithoutPrefix(id) {
 		return id.substr(id.indexOf(':') + 1);
 	}
 
@@ -227,7 +227,7 @@ define([
 					backgroundSize: 'cover'
 				} : {
 					backgroundColor: 'red'
-				}).attr('title', withoutIdPrefix(ensgModel.id));
+				}).attr('title', idWithoutPrefix(ensgModel.id));
 
 			});
 
