@@ -49,7 +49,7 @@ require([
 
 
 	/* need to load this after plugin-selection */
-	var getFmaModels = require('apinatomy/fma-model');
+	var getFmaModels = require('./restricted-fma-model.js');
 
 
 	/* instantiate the circuit-board */

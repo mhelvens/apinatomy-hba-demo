@@ -3,6 +3,7 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/src/index/p-proteins.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index/p-proteins.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/index/restricted-fma-model.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index/util/defer.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index/util/misc.js" charset="UTF-8" />
   </component>
