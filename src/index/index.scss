@@ -2,6 +2,8 @@
 
 ///////////////////////// Variables /////////////////////////
 
+$amy-control-panel-height: 36px;
+$amy-circuitboard-margin: 20px;
 $amy-tile-header-height: 26px;
 $amy-tile-border-width: 1px;
 $amy-tile-status-icon-size: 10px;
@@ -21,12 +23,41 @@ body {
 	overflow: hidden;
 }
 
+#control-panel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: $amy-control-panel-height - 1px;
+	border-bottom: solid 1px black;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 99;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	label {
+		margin-left: 10px;
+		margin-right: 5px;
+		font-weight: bold;
+
+		position: relative;
+		top: -1px;
+
+		input[type="checkbox"] {
+			position: relative;
+			top: 2px;
+		}
+	}
+}
+
 #circuitboard {
 	position: absolute;
-	top: 20px;
-	left: 20px;
-	right: 20px;
-	bottom: 20px;
+	top: $amy-circuitboard-margin + $amy-control-panel-height;
+	left: $amy-circuitboard-margin;
+	right: $amy-circuitboard-margin;
+	bottom: $amy-circuitboard-margin;
 	z-index: 1;
 }
 

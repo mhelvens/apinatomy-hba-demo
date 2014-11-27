@@ -86,6 +86,8 @@ INTERNAL_LIBRARIES.concat(APPLICATIONS).forEach(function (m) {
 				{ test: /\.js/, loader: "traceur?script" },
 				{ test: /\.png/, loader: "file" },
 				{ test: /\.jpg/, loader: "file" },
+				{ test: /\.obj/, loader: "file" },
+				{ test: /\.3d\.json/, loader: "file" },
 				{ test: /\.json/, loader: "json5" }
 			]
 		},

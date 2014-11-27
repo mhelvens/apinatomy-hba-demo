@@ -25,7 +25,9 @@ require([
 	'apinatomy/p-tile-middleclick-to-maximize',
 	'apinatomy/p-d3',
 	'apinatomy/p-three-d',
-	//'apinatomy/p-three-d-geometric-models',
+	'apinatomy/p-three-d-geometric-models',
+	'./p-three-d-geometric-models-obj.js',
+	'./p-three-d-geometric-models-json.js',
 	//'apinatomy/p-three-d-geometric-models-stl',
 	'apinatomy/p-d3-three-d',
 	'./p-proteins.js'
@@ -42,7 +44,9 @@ require([
 		'tile-spacing',
 		'tile-active',
 		'three-d',
-		'proteins'
+		'proteins',
+		'three-d-geometric-models-obj',
+		'three-d-geometric-models-json'
 		//'three-d-geometric-models-stl',
 		//'vascularization'
 	]);
@@ -58,10 +62,25 @@ require([
 		tileSpacing: 1,
 		tilemapMargin: 0,
 		weightWhenOpen: 8,
-		threeDCanvasElement: $('#three-d-canvas')
+		threeDCanvasElement: $('#three-d-canvas'),
+		threeDModels: {
+			'fma:7148':  [ require('./3d-models/FMA7148_Stomach.obj') ],
+			'fma:7197':  [ require('./3d-models/FMA7197_Liver.obj') ],
+			'fma:7203':  [ require('./3d-models/FMA7204_Right_Kidney.obj') ],
+			'fma:67944': [ require('./3d-models/FMA67944_Cerebellum.obj') ]//,
+			//'fma:9462':  [ require('./3d-models/contracting-heart-2.3d.json') ]
+		}
 	}).circuitboard('instance').then(function (circuitboard) {
 
 		console.info('circuitboard loaded');
+
+		$('#checkbox-3d-protein-domains').on('change', function () {
+			circuitboard.proteinDomainsVisible = $(this).prop('checked');
+		});
+
+		$('#checkbox-3d-geometric-models').on('change', function () {
+			circuitboard.geometricModelsVisible = $(this).prop('checked');
+		});
 
 	});
 

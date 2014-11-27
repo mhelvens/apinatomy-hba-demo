@@ -1,0 +1,5 @@
+{
+	"type": "external-library",
+	"name": "three-js",
+	"var": "THREE"
+}

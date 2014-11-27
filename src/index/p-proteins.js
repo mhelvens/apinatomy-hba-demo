@@ -142,8 +142,11 @@ define([
 					this.circuitboard.object3D.remove(kebab);
 				});
 				this.oneValue('visible', false, this.observe('open', (open) => {
-					kebab.visible = !open;
+					kebab.visible = !open && this.circuitboard.proteinDomainsVisible;
 				}));
+				this.circuitboard.observe('proteinDomainsVisible', (visible) => {
+					kebab.visible = visible && !this.open;
+				}); // TODO: Bacon.js property combining awesomeness
 
 				/* synchronize the kebab with the protein */
 				this.oneValue('visible', false, protein.observe('x', (x) => { kebab.position.x = x }));
@@ -222,6 +225,10 @@ define([
 
 				var imageUrl = ensgToFmaToImageUrl[ensgModel.id] && ensgToFmaToImageUrl[ensgModel.id][fmaModel.id];
 
+				if (!imageUrl) {
+					this.observeValue('visible', true, () => { this.visible = false });
+				}
+
 				this.element.children('header').css(imageUrl ? {
 					backgroundImage: `url(${imageUrl})`,
 					backgroundSize: 'cover'
@@ -252,14 +259,26 @@ define([
 					this.object3D.remove(kebab);
 				});
 				this.oneValue('visible', false, this.observe('open', (open) => {
-					kebab.visible = !open;
+					kebab.visible = !open && this.circuitboard.proteinDomainsVisible;
 				}));
+				this.circuitboard.observe('proteinDomainsVisible', (visible) => {
+					kebab.visible = visible && !this.open;
+				}); // TODO: Bacon.js property combining awesomeness
 
 
 			});
 
 		}
 	});
+
+	/* show protein-domain kebabs? */
+	plugin.append('Circuitboard.prototype.construct', function () {
+		this.newObservable('proteinDomainsVisible', {
+			initial: false,
+			validate: (v) => !!v
+		});
+	});
+
 
 
 });

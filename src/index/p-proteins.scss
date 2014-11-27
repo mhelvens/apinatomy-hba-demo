@@ -1,5 +1,6 @@
 .circuitboard > svg.d3 {
 	.protein.vertex > .core {
+		visibility: hidden;
 		pointer-events: visiblePainted;
 		fill: lighten(purple, 20);
 		stroke: purple;

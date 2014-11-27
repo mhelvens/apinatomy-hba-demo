@@ -161,18 +161,18 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:14544"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:14542"
-				}
-			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:14544"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:14542"
+//				}
+//			},
 			{
 				"type": "seed",
 				"entity": {
@@ -215,24 +215,24 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7202"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7206"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7198"
-				}
-			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7202"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7206"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7198"
+//				}
+//			},
 			{
 				"type": "seed",
 				"entity": {
@@ -254,12 +254,12 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7148"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7148"
+//				}
+//			}
 		],
 		"name": "Stomach"
 	}, //done
@@ -275,12 +275,12 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7131"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7131"
+//				}
+//			}
 		],
 		"name": "Esophagus"
 	}, //done
@@ -296,30 +296,30 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:9597"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:59660"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:9609"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:54878"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:9597"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:59660"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:9609"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:54878"
+//				}
+//			}
 		],
 		"name": "Mouth Throat"
 	}, //done
@@ -335,54 +335,54 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:19949"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:17740"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7209"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:18255"
-				}
-			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:19949"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:17740"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7209"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:18255"
+//				}
+//			},
 			{
 				"type": "seed",
 				"entity": {
 					"_id": "fma:7210"
 				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:19386"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:18245"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:17558"
-				}
-			}
+			}//,
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:19386"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:18245"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:17558"
+//				}
+//			}
 		],
 		"name": "Genitals Gonads"
 	},//done
@@ -413,24 +413,24 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:63934"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7196"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:9604"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:63934"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7196"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:9604"
+//				}
+//			}
 		],
 		"name": "Vascular Abdominal"
 	}, //done
@@ -446,12 +446,12 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:9462"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:9462"
+//				}
+//			}
 		],
 		"name": "Vascular Thoracic"
 	}, //done
@@ -467,12 +467,12 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:9603"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:9603"
+//				}
+//			}
 		],
 		"name": "Vascular Cephalic"
 	}, //done
@@ -488,18 +488,18 @@
 			}
 		},
 		"sub": [
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7409"
-				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:7195"
-				}
-			}
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7409"
+//				}
+//			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:7195"
+//				}
+//			}
 		],
 		"name": "Lungs"
 	}, //done
@@ -520,13 +520,13 @@
 				"entity": {
 					"_id": "fma:7203"
 				}
-			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:15900"
-				}
-			}
+			}//,
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:15900"
+//				}
+//			}
 		],
 		"name": "Urinary Tract"
 	}, //done
@@ -593,12 +593,12 @@
 					"_id": "fma:67944"
 				}
 			},
-			{
-				"type": "seed",
-				"entity": {
-					"_id": "fma:78448"
-				}
-			},
+//			{
+//				"type": "seed",
+//				"entity": {
+//					"_id": "fma:78448"
+//				}
+//			},
 			{
 				"type": "seed",
 				"entity": {
